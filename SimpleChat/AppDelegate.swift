@@ -9,7 +9,7 @@
 import UIKit
 import MultipeerConnectivity
 
-let serviceType = "simple-chat2"
+let serviceType = "simple-chat"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, MCSessionDelegate, MCAdvertiserAssistantDelegate {

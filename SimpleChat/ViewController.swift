@@ -83,8 +83,9 @@ class ViewController: UITableViewController, MCBrowserViewControllerDelegate {
         cell.textLabel!.text = name
 
         if !(appDelegate.dict[peerID] is NSNull) {
-            let image = appDelegate.dict[peerID] as UIImage
-            cell.imageView!.image = image as UIImage
+            if let image = appDelegate.dict[peerID] as UIImage? {
+                cell.imageView!.image = image as UIImage
+            }
         }
         
         return cell
