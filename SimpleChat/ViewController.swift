@@ -77,16 +77,15 @@ class ViewController: UITableViewController, MCBrowserViewControllerDelegate {
         let peerID = appDelegate.users[indexPath.row] as MCPeerID
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         
-        
 //        let peerID = dict["peerID"] as MCPeerID
         
         let name = peerID.displayName
         cell.textLabel!.text = name
-        
-        if !(dict[peerID] is NSNull) {
-            let image = dict[peerID] as UImage
+
+        if !(appDelegate.dict[peerID] is NSNull) {
+            let image = appDelegate.dict[peerID] as UIImage
+            cell.imageView!.image = image as UIImage
         }
-        
         
         return cell
     }
@@ -135,7 +134,5 @@ class ViewController: UITableViewController, MCBrowserViewControllerDelegate {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
     }
-    
-    
     
 }

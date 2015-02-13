@@ -102,8 +102,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MCSessionDelegate, MCAdve
         println("peerID: \(peerID) didChangeState: \(state.rawValue)")
         
         if state == .Connected {
-            users.insertObject(peerID, atIndex: 0)
-            
+            users.insertObject(peerID, atIndex: 0)            
         }
     }
 }
