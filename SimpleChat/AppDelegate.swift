@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MCSessionDelegate, MCAdve
     var notificationCenter = NSNotificationCenter()
     var advertiserAssistant: MCAdvertiserAssistant?
     var users = NSMutableArray()
+    let peerImage:UIImage = UIImage(named: "TonyImage.png")!
     
     var dict = NSMutableDictionary()
     
@@ -35,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MCSessionDelegate, MCAdve
         // Override point for customization after application launch.
         
         let peerID = MCPeerID(displayName: "Tony")
+        
         session = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: .Required)
         session?.delegate = self
 
@@ -102,6 +104,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MCSessionDelegate, MCAdve
         println("peerID: \(peerID) didChangeState: \(state.rawValue)")
         
         if state == .Connected {
+            var imageData = UIImagePNGRepresentation(peerImage)
+            var error: NSError?
+            session.sendData(imageData, toPeers: [peerID], withMode: .Reliable, error: &error)
             users.insertObject(peerID, atIndex: 0)            
         }
     }
